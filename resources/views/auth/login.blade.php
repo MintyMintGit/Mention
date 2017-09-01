@@ -1,31 +1,43 @@
 @extends('app')
 
 @section('content')
-    <h1>Login</h1>
 
-    @include('errors')
+        <div class="row">
+            <div class="Absolute-Center is-Responsive">
+                <div id="logo-container"></div>
+                <div class="col-sm-12 col-md-10 col-md-offset-1">
+                    @include('errors')
+                    <form id="loginForm registerContainer"  method="POST" action="/login">
+                        {!! csrf_field() !!}
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input class="form-control" type="text" name='username' placeholder="username"/>
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input class="form-control" type="password" name='password' placeholder="password"/>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-def btn-block">Login</button>
+                        </div>
+                        <div class="form-group text-center">
+                            <a href="#">Forgot Password</a>
+                        </div>
+                    </form>
+                </div>
 
-    <form method="POST" action="/login">
-        {!! csrf_field() !!}
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-def btn-block">Google</button>
+                </div>
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-def btn-block">Facebook</button>
+                </div>
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-def btn-block">LinkedIn</button>
+                </div>
 
-        <div class="form-group">
-            <label for="email">Email Address:</label>
-            <input type="text" name="email" id="email" class="form-control" value="{{ old('email') }}">
+            </div>
         </div>
 
-        <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password" class="form-control">
-        </div>
 
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" name="remember" id="remember" {{ old('remember') ? ' checked' : '' }}> Remember Me
-            </label>
-        </div>
-
-        <div class="form-group">
-            <button type="submit" class="btn btn-default">Sign In</button>
-        </div>
-    </form>
 @stop

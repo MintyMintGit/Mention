@@ -1,30 +1,43 @@
 @extends('app')
 
 @section('content')
+
+    <div class="row">
+        <div class="Absolute-Center is-Responsive"> </div>
+        <div id="logo-container"></div>
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            @include('errors')
+            <form id="loginForm registerContainer"  method="POST" action="/postLogin">
+                {!! csrf_field() !!}
+
+                <div class="form-group">
+                    <label for="password">First Name:</label>
+                    <input type="text" name="first_name" id="first_name" class="form-control" value="{{ old('first_name') }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Last Name:</label>
+                    <input type="text" name="last_name" id="last_name" class="form-control" value="{{ old('last_name') }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Confirm Password:</label>
+                    <input type="confirm_password" name="confirm_password" id="confirm_password" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-def btn-block">Register</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
     <h1>Register</h1>
 
     @include('errors')
-
-    <form method="POST" action="/register">
-        {!! csrf_field() !!}
-
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}">
-        </div>
-
-        <div class="form-group">
-            <label for="email">Email Address:</label>
-            <input type="text" name="email" id="email" class="form-control" value="{{ old('email') }}">
-        </div>
-
-        <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password" class="form-control">
-        </div>
-
-        <div class="form-group">
-            <button type="submit" class="btn btn-default">Register</button>
-        </div>
-    </form>
 @stop
