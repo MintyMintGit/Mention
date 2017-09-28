@@ -24,7 +24,6 @@ class RegistrationController extends Controller
             'username' => 'required|string|max:255|min:1',
             'password' => 'required'
         ]);
-        $a =10;
         //return redirect()->back();
         //$request->username;
         //$request->password;
@@ -43,20 +42,19 @@ class RegistrationController extends Controller
      */
     public function postRegister(Request $request, AppMailer $mailer)
     {
-
         $this->validate($request, [
-            //'first_name' => 'required|string|max:255|min:1',
-            //'last_name' => 'required|string|max:255|min:1',
-            //'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|regex:@[A-Z]@|regex:@[a-z]@|regex:@[0-9]@|regex:[\W]'
+            'first_name' => 'required|string|max:255|min:1',
+            'last_name' => 'required|string|max:255|min:1',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|regex:@[A-Z]@|regex:@[a-z]@|regex:@[0-9]@|regex:[\W]|confirmed',
+            'password_confirmation' => 'required'
         ]);
-
-
-        //$user = User::create($request->all());
+        $request->request->add(['email_key' => $key = md5(microtime().rand())]);
+        $user = User::create($request->all());
         //$mailer->sendEmailConfirmationTo($user);
-        //flash('Please confirm your email address.');
-        //return redirect()->back();
-        return view('auth.register');
+//        flash('Please confirm your email address.');
+        return redirect()->back();
+        //return view('auth.register');
     }
     /**
      * Confirm a user's email address.

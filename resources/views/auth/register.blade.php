@@ -21,13 +21,18 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="password">Email:</label>
+                    <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}">
+                </div>
+
+                <div class="form-group">
                     <label for="password">Password:</label>
                     <input type="password" name="password" id="password" class="form-control">
                 </div>
 
                 <div class="form-group">
                     <label for="password">Confirm Password:</label>
-                    <input type="confirm_password" name="confirm_password" id="confirm_password" class="form-control">
+                    <input type="password_confirmation" name="password_confirmation" id="password_confirmation" class="form-control">
                 </div>
 
                 <div class="form-group">
