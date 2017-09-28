@@ -7,7 +7,7 @@
         <div id="logo-container"></div>
         <div class="col-sm-12 col-md-10 col-md-offset-1">
             @include('errors')
-            <form id="loginForm registerContainer"  method="POST" action="/postLogin">
+            <form id="loginForm registerContainer"  method="POST" action="/postregister">
                 {!! csrf_field() !!}
 
                 <div class="form-group">

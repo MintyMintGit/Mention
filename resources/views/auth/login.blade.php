@@ -7,7 +7,7 @@
                 <div id="logo-container"></div>
                 <div class="col-sm-12 col-md-10 col-md-offset-1">
                     @include('errors')
-                    <form id="loginForm registerContainer"  method="POST" action="/login">
+                    <form id="loginForm registerContainer"  method="POST" action="{{ url('/postlogin') }}">
                         {!! csrf_field() !!}
                         <div class="form-group input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -18,10 +18,10 @@
                             <input class="form-control" type="password" name='password' placeholder="password"/>
                         </div>
                         <div class="form-group">
-                            <button type="button" class="btn btn-def btn-block">Login</button>
+                            <button type="submit" class="btn btn-def btn-block">Login</button>
                         </div>
                         <div class="form-group text-center">
-                            <a href="#">Forgot Password</a>
+                            <a href="{{ url('/register') }}">Forgot Password</a>
                         </div>
                     </form>
                 </div>

@@ -16,15 +16,24 @@ class RegistrationController extends Controller
     {
         $this->middleware('guest');
     }
-    /**
-     * Show the register page.
-     *
-     * @return \Response
-     */
-    public function register()
+
+    public function postLogin(Request $request)
     {
-        return view('auth.register');
+
+        $this->validate($request, [
+            'username' => 'required|string|max:255|min:1',
+            'password' => 'required'
+        ]);
+        $a =10;
+        //return redirect()->back();
+        //$request->username;
+        //$request->password;
+        //$errors[] = "Error login";
+        return view('auth.login');
     }
+
+
+
     /**
      * Perform the registration.
      *
@@ -34,16 +43,20 @@ class RegistrationController extends Controller
      */
     public function postRegister(Request $request, AppMailer $mailer)
     {
+
         $this->validate($request, [
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required'
+            //'first_name' => 'required|string|max:255|min:1',
+            //'last_name' => 'required|string|max:255|min:1',
+            //'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|regex:@[A-Z]@|regex:@[a-z]@|regex:@[0-9]@|regex:[\W]'
         ]);
-        $user = User::create($request->all());
-        $mailer->sendEmailConfirmationTo($user);
-        flash('Please confirm your email address.');
-        return redirect()->back();
+
+
+        //$user = User::create($request->all());
+        //$mailer->sendEmailConfirmationTo($user);
+        //flash('Please confirm your email address.');
+        //return redirect()->back();
+        return view('auth.register');
     }
     /**
      * Confirm a user's email address.

@@ -24,7 +24,8 @@ Route::middleware(['guest'])->group(function () {
         return view('auth.register');
     });
 
-    Route::post('/postLogin', 'SessionsController@postLogin');
+    Route::post('/postlogin', 'RegistrationController@postLogin');
+    Route::post('/postregister', 'RegistrationController@postregister');
 });
 
 
